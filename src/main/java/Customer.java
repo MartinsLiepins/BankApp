@@ -5,37 +5,43 @@ import java.util.ArrayList;
  */
 public class Customer {
 
-	private String customerName;
+	private String Name;
 	private ArrayList<Double> loanAmount;
 	private ArrayList<Double> passingTerm;
 
-	public Customer(String customerName, double Amount, double Term){
-		this.customerName = customerName;
+	public Customer(){
+		this.Name = Name;
 		this.loanAmount = new ArrayList<Double>();
 		this.passingTerm = new ArrayList<Double>();
-		addLoan(Amount);
+		//addLoan(Amount);
 	}
 
-	public void addLoan(double amount){
-		this.loanAmount.add(amount);
+//	public void addLoan(double amount){
+//		this.loanAmount.add(amount);
+//	}
+
+//	public void extendPassingTerm(double passingTerm){
+//		this.passingTerm.add(passingTerm);
+//	}
+
+	public String getName(){
+		return Name;
 	}
-
-	public void extendPassingTerm(double passingTerm){
-		this.passingTerm.add(passingTerm);
-	}
-
-
-	public String getCustomerName(){
-		return customerName;
-	}
-
 	public ArrayList<Double> getLoanAmount(){
 		return loanAmount;
 	}
-
 	public ArrayList<Double> getPassingTerm(){
 		return passingTerm;
 	}
 
 
+	public void setName(String name){
+		this.Name = name;
+	}
+	public void addLoanAmount(Double value){
+		loanAmount.add(value);
+	}
+	public void addPassingTerm(Double value){
+		passingTerm.add(value);
+	}
 }
