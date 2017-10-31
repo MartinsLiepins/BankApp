@@ -41,7 +41,9 @@ public class CreditApplication {
 					break;
 				}
 				default:{
-					System.out.println("Wrong choose. \nPlease press 1 to log in system");
+					if(menuItem !=7){
+						System.out.println("Wrong choose. \nPlease press 1 to log in system");
+					}
 				}
 			}
 
@@ -111,7 +113,7 @@ public class CreditApplication {
 
 	private static void viewUserLoans(Customer loginCustomer){
 		System.out.println(loginCustomer.getName() + " loans are:\n" +
-							"Loans Amount, EUR  --> " + loginCustomer.getLoanAmount() +"\n"+
+							"Loans amount, EUR  --> " + loginCustomer.getLoanAmount() +"\n"+
 							"Loans passing term --> " + loginCustomer.getPassingTerm());
 	}
 
@@ -142,16 +144,6 @@ public class CreditApplication {
 		System.out.println("4. View all user loans");
 		System.out.println("5. Print program menu");
 		System.out.println("6. Exit from user");
-	}
-
-	private Customer findCustomer(String customerName, List<Customer> loanList){
-		for(int i=0; i<loanList.size(); i++){
-			Customer checkedCustomer = loanList.get(i);
-			if(checkedCustomer.getName().equals(customerName)){
-				return checkedCustomer;
-			}
-		}
-		return null;
 	}
 
 	private static Customer searchForCustomer(String Name, List<Customer> loanList){
