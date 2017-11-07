@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.ArrayList;
 
 /**
@@ -7,12 +9,12 @@ public class Customer {
 
 	private String Name;
 	private ArrayList<Double> loanAmount;
-	private ArrayList<Double> passingTerm;
+	private ArrayList<Integer> passingTerm;
 
 	public Customer(){
 		this.Name = Name;
 		this.loanAmount = new ArrayList<Double>();
-		this.passingTerm = new ArrayList<Double>();
+		this.passingTerm = new ArrayList<Integer>();
 		//addLoan(Amount);
 	}
 
@@ -30,7 +32,7 @@ public class Customer {
 	public ArrayList<Double> getLoanAmount(){
 		return loanAmount;
 	}
-	public ArrayList<Double> getPassingTerm(){
+	public ArrayList<Integer> getPassingTerm(){
 		return passingTerm;
 	}
 
@@ -41,7 +43,7 @@ public class Customer {
 	public void addLoanAmount(Double value){
 		loanAmount.add(value);
 	}
-	public void addPassingTerm(Double value){
+	public void addPassingTerm(Integer value){
 		passingTerm.add(value);
 	}
 }
