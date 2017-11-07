@@ -46,6 +46,10 @@ public class CreditApplication {
 		printProgramMenu();
 		while(true){
 			int menuItem = getFromMenuItemToExecute();
+			if(menuItem == 5){
+				printProgramMenu();
+				continue;
+			}
 			if(menuItem == 7){
 				System.out.println("System is shutting down ...");
 				break;
