@@ -4,24 +4,26 @@ import bussinesLogic.ViewUserLoansService;
 import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.ViewUserLoansRequest;
 import bussinesLogic.api.ViewUserLoansResponse;
-import database.Database;
+import database.CustomerDAO;
 import domain.Customer;
+
+import java.util.List;
 
 /**
  * Created by marko on 2017.11.06..
  */
 public class ViewUserLoansImpl implements ViewUserLoansService{
 
-//	 private Database database;
-	private Customer logInCustomer;
+	private CustomerDAO customerDAO;
+	private List<Customer> userLoans;
 
-	public ViewUserLoansImpl(){
-		this.logInCustomer = logInCustomer;
+	public ViewUserLoansImpl(CustomerDAO customerDAO){
+		this.customerDAO = customerDAO;
 	}
 
 	@Override
-	public ViewUserLoansResponse getLogInUserLoans(ViewUserLoansRequest request){
-		logInCustomer = LogInSystemResponse.getCustomer();
-		return new ViewUserLoansResponse(logInCustomer);
+	public ViewUserLoansResponse getUserLoans(ViewUserLoansRequest request){
+
+		return new ViewUserLoansResponse(customerDAO.getUserLoans(request.getCustomerId()));
 	}
 }

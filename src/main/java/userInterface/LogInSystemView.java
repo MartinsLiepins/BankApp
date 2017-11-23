@@ -23,23 +23,23 @@ public class LogInSystemView implements View {
 
 		if(LogInSystemResponse.getCustomer() != null){
 			System.out.println(LogInSystemResponse.getCustomer().getName() +
-					", you ar alredy logged in system. Please log out or choose another menu item");
+					", you ar alredy logged in system. " +
+					"\nPlease log out or choose another menu item");
 		}else{
 			System.out.println("Enter Name to log in system");
 			Scanner sc = new Scanner(System.in);
 			String loginName = sc.nextLine();
 			Customer logInCustomer;
 
-//		Bussines logic
-			logInSystemService.logInSystem(new LogInSystemRequest(loginName));
-//
-			if(LogInSystemResponse.getCustomer() == null){
+			LogInSystemResponse response =
+					logInSystemService.logInSystem(new LogInSystemRequest(loginName));
+
+			if(response.getCustomer() == null){
 				System.out.println(loginName + ", you are new customer.");
+				response = logInSystemService.addNewUser(new LogInSystemRequest(loginName));
 				System.out.println(loginName + ", you ar logged in system, please choose menu item");
-				logInSystemService.addNewUser(new LogInSystemRequest(loginName));
 			}else{
-				logInCustomer = LogInSystemResponse.getCustomer();
-				System.out.println(logInCustomer.getName() + ", you ar logged in system");
+				System.out.println(response.getCustomer().getName() + ", you ar logged in system");
 			}
 		}
 	}

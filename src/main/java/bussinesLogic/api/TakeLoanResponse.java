@@ -4,12 +4,12 @@ package bussinesLogic.api;
  * Created by marko on 2017.11.02..
  */
 public class TakeLoanResponse {
-	private boolean done;
+	private boolean result;
 
 	public TakeLoanResponse(boolean result){
-		this.done = result;
+		this.result = result;
 	}
-	public boolean isResult(){
-		return done;
+	public boolean takeLoanResult(){
+		return result;
 	}
 }

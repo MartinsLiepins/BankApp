@@ -3,7 +3,7 @@ package bussinesLogic.impl;
 import bussinesLogic.LogInSystemService;
 import bussinesLogic.api.LogInSystemRequest;
 import bussinesLogic.api.LogInSystemResponse;
-import database.Database;
+import database.CustomerDAO;
 import domain.Customer;
 
 /**
@@ -11,16 +11,16 @@ import domain.Customer;
  */
 public class LogInSystemServiceImpl implements LogInSystemService {
 
-	private Database database;
+	private CustomerDAO customerDAO;
 
-	public LogInSystemServiceImpl(Database database){
-		this.database = database;
+	public LogInSystemServiceImpl(CustomerDAO customerDAO){
+		this.customerDAO = customerDAO;
 	}
 
 	@Override
 	public LogInSystemResponse logInSystem(LogInSystemRequest request){
 		Customer databaseCustomer;
-		databaseCustomer = database.searchForCustomer(request.getName());
+		databaseCustomer = customerDAO.searchCustomer(request.getName());
 		return new LogInSystemResponse(databaseCustomer);
 	}
 
@@ -28,7 +28,7 @@ public class LogInSystemServiceImpl implements LogInSystemService {
 	public LogInSystemResponse addNewUser(LogInSystemRequest request){
 		Customer newCustomer = new Customer();
 		newCustomer.setName(request.getName());
-		database.saveCustomer(newCustomer);
+		newCustomer = customerDAO.saveNewCustomer(newCustomer);
 		return new LogInSystemResponse(newCustomer);
 	}
 }

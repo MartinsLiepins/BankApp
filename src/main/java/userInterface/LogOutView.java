@@ -11,7 +11,7 @@ import domain.Customer;
  */
 public class LogOutView implements View{
 
-	LogOutService logOutService;
+	private LogOutService logOutService;
 
 	public LogOutView(LogOutService logOutService){
 		this.logOutService = logOutService;
@@ -24,7 +24,7 @@ public class LogOutView implements View{
 			System.out.println("Wrong choose. You are not logged in system." +
 								"\n Please press 1 to log in");
 		}else{
-			System.out.println("your are logging out... " );
+			System.out.println("Your are logging out... " );
 
 		}
 

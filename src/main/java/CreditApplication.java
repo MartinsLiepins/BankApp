@@ -1,14 +1,8 @@
-import bussinesLogic.LogInSystemService;
-import bussinesLogic.LogOutService;
-import bussinesLogic.TakeLoanService;
-import bussinesLogic.ViewUserLoansService;
-import bussinesLogic.impl.LogInSystemServiceImpl;
-import bussinesLogic.impl.LogOutServiceImpl;
-import bussinesLogic.impl.TakeLoanServiceImpl;
-import bussinesLogic.impl.ViewUserLoansImpl;
-import database.Database;
-import database.InMemoryDatabase;
-import domain.Customer;
+import bussinesLogic.*;
+import bussinesLogic.api.LogInSystemResponse;
+import bussinesLogic.impl.*;
+import database.CustomerDAO;
+import database.jdbc.CustomerDAOImpl;
 import userInterface.*;
 
 import java.util.*;
@@ -28,18 +22,18 @@ public class CreditApplication {
 		//6. Exit from user
 		//7. Exit from application
 
-		Database database = new InMemoryDatabase();
+		CustomerDAO customerDAO = new CustomerDAOImpl();
 
-		LogInSystemService logInSystemService = new LogInSystemServiceImpl(database);
-		TakeLoanService takeLoanService = new TakeLoanServiceImpl(database);
+		LogInSystemService logInSystemService = new LogInSystemServiceImpl(customerDAO);
+		TakeLoanService takeLoanService = new TakeLoanServiceImpl(customerDAO);
 		LogOutService logOutService = new LogOutServiceImpl();
-//		ExtendPassingTermService extendPassingTermService = new ExtendPassingTermService(database);
-		ViewUserLoansService viewUserLoansService = new ViewUserLoansImpl();
+		ExtendPassingTermService extendPassingTermService = new ExtendPassingTermImpl(customerDAO);
+		ViewUserLoansService viewUserLoansService = new ViewUserLoansImpl(customerDAO);
 
 		Map<Integer, View> commands = new HashMap<>();
 		commands.put(1, new LogInSystemView(logInSystemService));
 		commands.put(2, new TakeLoanView(takeLoanService));
-//		commands.put(3, new ExtendPassingTermView(extendPassingTermView));
+		commands.put(3, new ExtendPassingTermView(extendPassingTermService));
 		commands.put(4, new ViewUserLoansView(viewUserLoansService));
 		commands.put(6, new LogOutView(logOutService));
 
@@ -54,7 +48,11 @@ public class CreditApplication {
 				System.out.println("System is shutting down ...");
 				break;
 			}
-
+//			if(LogInSystemResponse.getCustomer() == null){
+//				System.out.println("Wrong choose. You are not logged in system." +
+//						"\nPlease press 1 to log in");
+//				break;
+//			}
 			View view = commands.get(menuItem);
 			view.execute();
 		}
