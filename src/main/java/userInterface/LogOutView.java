@@ -5,17 +5,18 @@ import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.LogOutRequest;
 import bussinesLogic.api.LogOutResponse;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by marko on 2017.11.03..
  */
+
+@Component
 public class LogOutView implements View{
 
+	@Autowired
 	private LogOutService logOutService;
-
-	public LogOutView(LogOutService logOutService){
-		this.logOutService = logOutService;
-	}
 
 	@Override
 	public void execute(){

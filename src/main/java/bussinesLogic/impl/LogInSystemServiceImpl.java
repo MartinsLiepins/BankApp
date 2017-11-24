@@ -5,17 +5,18 @@ import bussinesLogic.api.LogInSystemRequest;
 import bussinesLogic.api.LogInSystemResponse;
 import database.CustomerDAO;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by marko on 2017.11.01..
  */
-public class LogInSystemServiceImpl implements LogInSystemService {
 
+@Component
+class LogInSystemServiceImpl implements LogInSystemService {
+
+	@Autowired
 	private CustomerDAO customerDAO;
-
-	public LogInSystemServiceImpl(CustomerDAO customerDAO){
-		this.customerDAO = customerDAO;
-	}
 
 	@Override
 	public LogInSystemResponse logInSystem(LogInSystemRequest request){

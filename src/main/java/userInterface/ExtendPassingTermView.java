@@ -4,19 +4,19 @@ import bussinesLogic.ExtendPassingTermService;
 import bussinesLogic.api.ExtendPassingTermRequest;
 import bussinesLogic.api.ExtendPassingTermResponse;
 import bussinesLogic.api.LogInSystemResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 /**
  * Created by marko on 2017.10.31..
  */
+@Component
 public class ExtendPassingTermView implements View{
 
+	@Autowired
 	private ExtendPassingTermService extendPassingTermService;
-
-	public ExtendPassingTermView(ExtendPassingTermService extendPassingTermService){
-		this.extendPassingTermService = extendPassingTermService;
-	}
 
 	@Override
 	public void execute(){

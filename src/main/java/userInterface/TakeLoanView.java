@@ -5,6 +5,8 @@ import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.TakeLoanRequest;
 import bussinesLogic.api.TakeLoanResponse;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -12,12 +14,12 @@ import java.util.Scanner;
 /**
  * Created by marko on 2017.10.31..
  */
-public class TakeLoanView implements View {
-	TakeLoanService takeLoanService;
 
-	public TakeLoanView(TakeLoanService takeLoanService){
-		this.takeLoanService = takeLoanService;
-	}
+@Component
+public class TakeLoanView implements View {
+
+	@Autowired
+	TakeLoanService takeLoanService;
 
 	@Override
 	public void execute(){

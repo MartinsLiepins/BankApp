@@ -5,18 +5,20 @@ import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.ViewUserLoansRequest;
 import bussinesLogic.api.ViewUserLoansResponse;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by marko on 2017.10.31..
  */
+
+@Component
 public class ViewUserLoansView implements View{
 
+	@Autowired
 	private	ViewUserLoansService viewUserLoansService;
-	private Long loggedInCustomerId;
 
-	public ViewUserLoansView(ViewUserLoansService viewUserLoansService){
-		this.viewUserLoansService = viewUserLoansService;
-	}
+	private Long loggedInCustomerId;
 
 	@Override
 	public void execute(){

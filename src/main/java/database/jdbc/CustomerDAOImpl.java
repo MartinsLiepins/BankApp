@@ -3,6 +3,7 @@ package database.jdbc;
 import database.CustomerDAO;
 import database.DBException;
 import domain.Customer;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,8 @@ import static domain.CustomerBuilder.createCustomer;
 /**
  * Created by marko on 2017.11.16..
  */
+
+@Component
 public class CustomerDAOImpl extends DAOImpl implements CustomerDAO {
 
 

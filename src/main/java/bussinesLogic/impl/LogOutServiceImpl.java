@@ -4,10 +4,13 @@ import bussinesLogic.LogOutService;
 import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.LogOutRequest;
 import bussinesLogic.api.LogOutResponse;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by marko on 2017.11.03..
  */
+
+@Component
 public class LogOutServiceImpl implements LogOutService {
 
 	@Override

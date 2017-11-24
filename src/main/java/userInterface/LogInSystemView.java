@@ -4,19 +4,20 @@ import bussinesLogic.LogInSystemService;
 import bussinesLogic.api.LogInSystemRequest;
 import bussinesLogic.api.LogInSystemResponse;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 /**
  * Created by marko on 2017.10.31..
  */
+
+@Component
 public class LogInSystemView implements View {
 
+	@Autowired
 	private LogInSystemService logInSystemService;
-
-	public LogInSystemView(LogInSystemService logInSystemService){
-		this.logInSystemService = logInSystemService;
-	}
 
 	@Override
 	public void execute(){

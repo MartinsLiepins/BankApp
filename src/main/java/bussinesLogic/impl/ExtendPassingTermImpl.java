@@ -5,19 +5,20 @@ import bussinesLogic.api.ExtendPassingTermRequest;
 import bussinesLogic.api.ExtendPassingTermResponse;
 import database.CustomerDAO;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by marko on 2017.11.20..
  */
+
+@Component
 public class ExtendPassingTermImpl implements ExtendPassingTermService{
 
+	@Autowired
 	private CustomerDAO customerDAO;
-
-	public ExtendPassingTermImpl(CustomerDAO customerDAO){
-		this.customerDAO = customerDAO;
-	}
 
 	@Override
 	public ExtendPassingTermResponse extendPassingTerm(ExtendPassingTermRequest request){
