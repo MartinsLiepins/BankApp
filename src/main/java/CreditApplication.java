@@ -1,15 +1,9 @@
-import bussinesLogic.LogInSystemService;
-import bussinesLogic.LogOutService;
-import bussinesLogic.TakeLoanService;
-import bussinesLogic.ViewUserLoansService;
-import bussinesLogic.impl.LogInSystemServiceImpl;
-import bussinesLogic.impl.LogOutServiceImpl;
-import bussinesLogic.impl.TakeLoanServiceImpl;
-import bussinesLogic.impl.ViewUserLoansImpl;
-import database.Database;
-import database.InMemoryDatabase;
-import domain.Customer;
+
+import configs.SpringAppConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import userInterface.*;
+
 
 import java.util.*;
 
@@ -19,29 +13,16 @@ import java.util.*;
 public class CreditApplication {
 	public static void main(String[] args){
 
-//		Use case:
-		//1. Log in system
-		//2. Take a loan
-		//3. Extend passing term
-		//4. View all user loans
-		//5. Print program menu
-		//6. Exit from user
-		//7. Exit from application
+		ApplicationContext applicationContext =
+				new AnnotationConfigApplicationContext(SpringAppConfig.class);
 
-		Database database = new InMemoryDatabase();
-
-		LogInSystemService logInSystemService = new LogInSystemServiceImpl(database);
-		TakeLoanService takeLoanService = new TakeLoanServiceImpl(database);
-		LogOutService logOutService = new LogOutServiceImpl();
-//		ExtendPassingTermService extendPassingTermService = new ExtendPassingTermService(database);
-		ViewUserLoansService viewUserLoansService = new ViewUserLoansImpl();
 
 		Map<Integer, View> commands = new HashMap<>();
-		commands.put(1, new LogInSystemView(logInSystemService));
-		commands.put(2, new TakeLoanView(takeLoanService));
-//		commands.put(3, new ExtendPassingTermView(extendPassingTermView));
-		commands.put(4, new ViewUserLoansView(viewUserLoansService));
-		commands.put(6, new LogOutView(logOutService));
+		commands.put(1, applicationContext.getBean(LogInSystemView.class));
+		commands.put(2, applicationContext.getBean(TakeLoanView.class));
+		commands.put(3, applicationContext.getBean(ExtendPassingTermView.class));
+		commands.put(4, applicationContext.getBean(ViewUserLoansView.class));
+		commands.put(6, applicationContext.getBean(LogOutView.class));
 
 		printProgramMenu();
 		while(true){
@@ -77,4 +58,3 @@ public class CreditApplication {
 		System.out.println("7. Exit from application");
 	}
 }
-

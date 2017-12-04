@@ -1,22 +1,17 @@
 package bussinesLogic.api;
 
-import domain.Customer;
-
 /**
  * Created by marko on 2017.11.02..
  */
 public class TakeLoanRequest {
 	private double loanAmount;
 	private int passingTerm;
-	private String name;
+	private Long Id;
 
-
-
-	public TakeLoanRequest(String name, double loanAmount, int passingTerm){
+	public TakeLoanRequest(Long Id, double loanAmount, int passingTerm){
 		this.loanAmount = loanAmount;
 		this.passingTerm = passingTerm;
-		this.name = name;
-
+		this.Id = Id;
 	}
 
 	public double getLoanAmount(){
@@ -26,8 +21,8 @@ public class TakeLoanRequest {
 	public int getPassingTerm(){
 		return passingTerm;
 	}
-	public String getName(){
-		return name;
+	public Long getId(){
+		return Id;
 	}
 
 	public void setLoanAmount(double loanAmount){

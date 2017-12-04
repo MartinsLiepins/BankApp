@@ -5,17 +5,18 @@ import bussinesLogic.api.LogInSystemResponse;
 import bussinesLogic.api.LogOutRequest;
 import bussinesLogic.api.LogOutResponse;
 import domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by marko on 2017.11.03..
  */
+
+@Component
 public class LogOutView implements View{
 
-	LogOutService logOutService;
-
-	public LogOutView(LogOutService logOutService){
-		this.logOutService = logOutService;
-	}
+	@Autowired
+	private LogOutService logOutService;
 
 	@Override
 	public void execute(){
@@ -24,7 +25,7 @@ public class LogOutView implements View{
 			System.out.println("Wrong choose. You are not logged in system." +
 								"\n Please press 1 to log in");
 		}else{
-			System.out.println("your are logging out... " );
+			System.out.println("Your are logging out... " );
 
 		}
 

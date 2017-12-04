@@ -8,10 +8,13 @@ import java.util.ArrayList;
  * Created by marko on 2017.11.07..
  */
 public class ViewUserLoansRequest {
-	private boolean getUserLoansRequest;
+	private Long customerId;
 
-	public ViewUserLoansRequest(boolean state){
-		this.getUserLoansRequest = state;
+	public ViewUserLoansRequest(Long customerId){
+		this.customerId = customerId;
 	}
 
+	public Long getCustomerId(){
+		return customerId;
+	}
 }
